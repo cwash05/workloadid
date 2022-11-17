@@ -18,6 +18,11 @@ A federated account is seteup ${aksPrefix}-fed.<br>
 A quick-start pod is deployed to the namespace using the service account and pulls the secret from the keyvault<br>
 <br>
 
+#### Deploy to a location that supports Zones
+./aksdeploy.sh  
+
+
+<br>  
 You can get the logs for the quick-start pod to verify workload identity. 
    
 **kubectl logs quick-start -n {aksPrefix}-ns**
@@ -26,5 +31,3 @@ You can get the logs for the quick-start pod to verify workload identity.
 I1013 22:49:29.872708       1 main.go:30] "successfully got secret" secret="Hello!"
 ```
 
-#### Deploy to a location that supports Zones
-./aksdeploy.sh

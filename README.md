@@ -27,3 +27,4 @@ I1013 22:49:29.872708       1 main.go:30] "successfully got secret" secret="Hell
 ```
 
 #### Deploy scipt to a location that supports Zones
+./aksdeploy.sh

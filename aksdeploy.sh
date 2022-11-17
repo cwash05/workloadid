@@ -11,6 +11,8 @@ echo -n 'Enter the location: (Should support Zones) '
 read location
 
 echo -n 'Enter the Admin password'
+echo -n 'The value must be between 12 and 72 characters long.'
+echo -n 'Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character.'
 read -sp 'Password: ' admin_pw 
 echo
 

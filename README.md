@@ -11,7 +11,7 @@ kubelet identity<br>
 running on Mariner/W2022 node pools<br>
 <br>
 
-A keyvault is setup with a secret 'Secret1'.<br>  
+A keyvault is setup with a secret 'Secret1'.<br>
 A workload(managaed) identity is setup ${aksPrefix}-workid.<br>
 A service accoount {aksPrefix}-sa is created in namespace {aksPrefix}-ns.<br>
 A federated account is seteup ${aksPrefix}-fed.<br>

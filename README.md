@@ -20,7 +20,7 @@ A quick-start pod is deployed to the namespace using the service account and pul
 
 You can get the logs for the quick-start pod to verify workload identity. 
    
-**kubectl logs quick-start**
+**kubectl logs quick-start -n {aksPrefix}-ns**
 
 ```script
 I1013 22:49:29.872708       1 main.go:30] "successfully got secret" secret="Hello!"

@@ -4,20 +4,17 @@
 template="aks-apivnet-wi.bicep"
 #parameters="main.parameters.json"
 
-# Name and location of the resource group for the Azure Kubernetes Service (AKS) cluster
-echo -n 'Enter ther resource group name: '
-read aksResourceGroupName
-
-echo -n 'Enter the location: '
-read location
-
 echo -n 'Enter AKS prefix: '
 read aksPrefix
+
+echo -n 'Enter the location: (Should support Zones) '
+read location
 
 echo -n 'Enter the Admin password'
 read -sp 'Password: ' admin_pw 
 echo
 
+aksResourceGroupName="${aksPrefix}-${location}-rg"
 userAssnIdName="${aksPrefix}-workid"
 fedIdName="${aksPrefix}-fed"  
 serviceAccountName="${aksPrefix}-sa" 

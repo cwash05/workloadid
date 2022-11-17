@@ -169,6 +169,49 @@ resource ccpNetAdminRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = 
 }
 
 
+module apiSubNsg 'vnetnsg.bicep' = {
+  name: '${vnet_name}-${api_sub_name}-nsg'
+  params:{
+    nsgName: '${vnet_name}-${api_sub_name}-nsg'
+    rglocation: location
+  }
+}
+
+module linuxNodeSubNsg 'vnetnsg.bicep' = {
+  name: '${vnet_name}-${linux_z1_sub_name}-nsg'
+  params:{
+    nsgName: '${vnet_name}-${linux_z1_sub_name}-nsg'
+    rglocation: location
+  }
+}
+module linuxPodSubNsg 'vnetnsg.bicep' = {
+  name: '${vnet_name}-${linux_z1_pod_sub_name}-nsg'
+  params:{
+    nsgName: '${vnet_name}-${linux_z1_pod_sub_name}-nsg'
+    rglocation: location
+  }
+}
+module winNodeSubNsg 'vnetnsg.bicep' = {
+  name: '${vnet_name}-${win_z1_sub_name}-nsg'
+  params:{
+    nsgName: '${vnet_name}-${win_z1_sub_name}-nsg'
+    rglocation: location
+  }
+}
+module winPodSubNsg 'vnetnsg.bicep' = {
+  name: '${vnet_name}-${win_z1_pod_sub_name}-nsg'
+  params:{
+    nsgName: '${vnet_name}-${win_z1_pod_sub_name}-nsg'
+    rglocation: location
+  }
+}
+module sysNodeSubNsg 'vnetnsg.bicep' = {
+  name: '${vnet_name}-${sysnode_sub_name}-nsg'
+  params:{
+    nsgName: '${vnet_name}-${sysnode_sub_name}-nsg'
+    rglocation: location
+  }
+}
 resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
   name: vnet_name
   dependsOn:[ laworkspace ]
@@ -187,6 +230,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: sysnode_sub_name
         properties: {
           addressPrefix: sysnode_address_prefix
+          networkSecurityGroup: { id: sysNodeSubNsg.outputs.nsgID }
           serviceEndpoints: []
           delegations: []
           privateEndpointNetworkPolicies: 'Disabled'
@@ -198,6 +242,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: linux_z1_sub_name
         properties: {
           addressPrefix: linux_z1_address_prefix
+          networkSecurityGroup: { id: linuxNodeSubNsg.outputs.nsgID }
           serviceEndpoints: []
           delegations: []
           privateEndpointNetworkPolicies: 'Disabled'
@@ -209,6 +254,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: win_z1_sub_name
         properties: {
           addressPrefix: win_z1_address_prefix
+          networkSecurityGroup: { id: winNodeSubNsg.outputs.nsgID }
           serviceEndpoints: []
           delegations: []
           privateEndpointNetworkPolicies: 'Disabled'
@@ -220,6 +266,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: win_z1_pod_sub_name
         properties: {
           addressPrefix: win_z1_pod_address_prefix
+          networkSecurityGroup: { id: winPodSubNsg.outputs.nsgID}
           serviceEndpoints: []
           delegations: []
           privateEndpointNetworkPolicies: 'Disabled'
@@ -231,6 +278,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: linux_z1_pod_sub_name
         properties: {
           addressPrefix: linux_z1_pod_address_prefix
+          networkSecurityGroup: { id: linuxPodSubNsg.outputs.nsgID}
           serviceEndpoints: []
           delegations: []
           privateEndpointNetworkPolicies: 'Disabled'
@@ -242,6 +290,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
         name: api_sub_name
         properties: {
           addressPrefix: api_address_prefix
+          networkSecurityGroup: { id: apiSubNsg.outputs.nsgID }
           serviceEndpoints: []
           delegations: [
             {

@@ -10,7 +10,7 @@ azure keyvault secrets provider
 kubelet identity
 running on Mariner/W2022 node pools
 
-A keyvault is setup with a secret 'Secret1'.  
+A keyvault is setup with a secret 'Secret1'.
 A workload(managaed) identity is setup ${aksPrefix}-workid.
 A service accoount {aksPrefix}-sa is created in namespace {aksPrefix}-ns.
 A federated account is seteup ${aksPrefix}-fed.

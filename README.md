@@ -1,7 +1,7 @@
 # workloadid
 script for creating aks cluster with 
-workload identity
-api vnet integration
+- workload identity
+- api vnet integration
 node and pod subnets
 azure network plugin
 azure network policy

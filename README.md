@@ -15,7 +15,7 @@ A keyvault is setup with a secret 'Secret1'.<br>
 A workload(managaed) identity is setup ${aksPrefix}-workid.<br>
 A service accoount {aksPrefix}-sa is created in namespace {aksPrefix}-ns.<br>
 A federated account is seteup ${aksPrefix}-fed.<br>
-A quick-start pod is createed using the service account and pulls the secret from the keyvault<br>
+A quick-start pod is deployed to the namespace using the service account and pulls the secret from the keyvault<br>
 <br>
 
 You can get the logs for the quick-start pod to verify workload identity. 
